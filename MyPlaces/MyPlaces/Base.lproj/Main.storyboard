@@ -30,12 +30,26 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Photo" translatesAutoresizingMaskIntoConstraints="NO" id="IGw-Rn-9QX">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c9z-Xf-jx5">
+                                                    <rect key="frame" x="344" y="189" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="kja-go-yHI"/>
+                                                        <constraint firstAttribute="width" constant="50" id="r0N-hQ-ias"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="map"/>
+                                                    <connections>
+                                                        <segue destination="MZd-zi-48S" kind="presentation" identifier="showMap" id="jRO-rM-ejh"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="IGw-Rn-9QX" firstAttribute="leading" secondItem="ckK-LL-DfA" secondAttribute="leading" id="GX2-dk-qch"/>
                                                 <constraint firstAttribute="trailing" secondItem="IGw-Rn-9QX" secondAttribute="trailing" id="KSJ-bf-KTV"/>
+                                                <constraint firstItem="c9z-Xf-jx5" firstAttribute="trailing" secondItem="ckK-LL-DfA" secondAttribute="trailingMargin" id="eud-Ob-waN"/>
                                                 <constraint firstItem="IGw-Rn-9QX" firstAttribute="top" secondItem="ckK-LL-DfA" secondAttribute="top" id="k34-cg-NFD"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="c9z-Xf-jx5" secondAttribute="bottom" id="oVF-iF-fa1"/>
                                                 <constraint firstAttribute="bottom" secondItem="IGw-Rn-9QX" secondAttribute="bottom" id="yM5-mz-dOv"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -154,6 +168,23 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="140" id="BFi-fJ-Ux9">
+                                        <rect key="frame" x="0.0" y="549.5" width="414" height="140"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BFi-fJ-Ux9" id="zN7-yi-K63">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="252" placeholderIntrinsicHeight="44" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="PYa-va-age" customClass="RatingControll" customModule="MyPlaces" customModuleProvider="target">
+                                                    <rect key="frame" x="81" y="48" width="252" height="44"/>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="PYa-va-age" firstAttribute="centerX" secondItem="zN7-yi-K63" secondAttribute="centerX" id="AIM-LL-M8Z"/>
+                                                <constraint firstItem="PYa-va-age" firstAttribute="centerY" secondItem="zN7-yi-K63" secondAttribute="centerY" id="Mk4-Ss-xyX"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -179,6 +210,7 @@
                         <outlet property="placeLocation" destination="5ia-ss-6wG" id="Aaf-Yn-tJd"/>
                         <outlet property="placeName" destination="01F-wf-3oN" id="LcI-kC-zmH"/>
                         <outlet property="placeType" destination="c3t-B2-zku" id="z4C-ag-hiM"/>
+                        <outlet property="ratingControl" destination="PYa-va-age" id="gth-cn-3B8"/>
                         <outlet property="saveButton" destination="COa-fG-vV5" id="bCb-Ga-Ul6"/>
                     </connections>
                 </tableViewController>
@@ -186,6 +218,50 @@
                 <exit id="nJn-Uc-tXw" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1641" y="291"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="ln2-8d-nKL">
+            <objects>
+                <viewController id="MZd-zi-48S" customClass="MapViewController" customModule="MyPlaces" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hIu-8S-uUH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2Fc-JT-FDB">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pjo-cd-JlE">
+                                <rect key="frame" x="344" y="40" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="2IR-ab-M9W"/>
+                                    <constraint firstAttribute="height" constant="30" id="vSD-WX-OyH"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="cancel"/>
+                                <connections>
+                                    <action selector="closeVC" destination="MZd-zi-48S" eventType="touchUpInside" id="WHy-EY-qBW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="L8d-k4-T8n"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="L8d-k4-T8n" firstAttribute="trailing" secondItem="2Fc-JT-FDB" secondAttribute="trailing" id="CyQ-UF-iMw"/>
+                            <constraint firstItem="pjo-cd-JlE" firstAttribute="top" secondItem="L8d-k4-T8n" secondAttribute="top" constant="40" id="Q7R-hu-dG6"/>
+                            <constraint firstItem="L8d-k4-T8n" firstAttribute="trailing" secondItem="pjo-cd-JlE" secondAttribute="trailing" constant="40" id="RXl-ne-91E"/>
+                            <constraint firstItem="2Fc-JT-FDB" firstAttribute="leading" secondItem="L8d-k4-T8n" secondAttribute="leading" id="X3o-H7-OHF"/>
+                            <constraint firstItem="2Fc-JT-FDB" firstAttribute="top" secondItem="L8d-k4-T8n" secondAttribute="top" id="fot-Sr-LEv"/>
+                            <constraint firstItem="L8d-k4-T8n" firstAttribute="bottom" secondItem="2Fc-JT-FDB" secondAttribute="bottom" id="ysD-yl-vqs"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Yha-b5-e2U"/>
+                    <connections>
+                        <outlet property="mapView" destination="2Fc-JT-FDB" id="iBY-TS-QUt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Iwe-On-N4Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2430" y="297"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8Yd-Ji-jtd">
@@ -234,7 +310,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="JyB-JV-P4l">
-                                <rect key="frame" x="0.0" y="120" width="414" height="742"/>
+                                <rect key="frame" x="0.0" y="120" width="414" height="776"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <inset key="separatorInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
                                 <prototypes>
@@ -315,7 +391,7 @@
                         <constraints>
                             <constraint firstItem="JyB-JV-P4l" firstAttribute="top" secondItem="rSJ-Op-ykF" secondAttribute="bottom" constant="1" id="26z-oX-7ab"/>
                             <constraint firstItem="rSJ-Op-ykF" firstAttribute="leading" secondItem="Yyo-rD-RWd" secondAttribute="leading" id="4kL-OB-Kfg"/>
-                            <constraint firstItem="Yyo-rD-RWd" firstAttribute="bottom" secondItem="JyB-JV-P4l" secondAttribute="bottom" id="BI0-27-BiX"/>
+                            <constraint firstAttribute="bottom" secondItem="JyB-JV-P4l" secondAttribute="bottom" id="BI0-27-BiX"/>
                             <constraint firstItem="JyB-JV-P4l" firstAttribute="leading" secondItem="Yyo-rD-RWd" secondAttribute="leading" id="WZB-6J-ge0"/>
                             <constraint firstItem="Yyo-rD-RWd" firstAttribute="trailing" secondItem="rSJ-Op-ykF" secondAttribute="trailing" id="ojt-m4-xVW"/>
                             <constraint firstItem="rSJ-Op-ykF" firstAttribute="top" secondItem="Yyo-rD-RWd" secondAttribute="top" id="wCP-3P-zmQ"/>
@@ -345,12 +421,19 @@
             <point key="canvasLocation" x="705.79710144927537" y="83.705357142857139"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="PYa-va-age">
+            <size key="intrinsicContentSize" width="252" height="44"/>
+        </designable>
+    </designables>
     <inferredMetricsTieBreakers>
         <segue reference="SxY-05-vUw"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="AZ" width="25" height="24"/>
         <image name="Photo" width="195" height="196"/>
+        <image name="cancel" width="30" height="30"/>
+        <image name="map" width="50" height="50"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

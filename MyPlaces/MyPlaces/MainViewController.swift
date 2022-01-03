@@ -85,6 +85,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     // MARK: Table view delegate
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true) // отменяем выделение ячейки
+    }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let place = places[indexPath.row]
@@ -93,8 +97,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    
     /*
-    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    overide func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let place = places[indexPath.row]
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (_, _, _) in
             StorageManager.deleteObject(place)
@@ -103,7 +108,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
-    */
+     */
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {

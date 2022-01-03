@@ -14,14 +14,16 @@ class Place: Object {
     @objc dynamic var imageData: Data?
     @objc dynamic var date = Date() // не будет доступно пользователю. Всегда будем инициализировать текущей датой
     // и будем использовать данное значение для сортировки по дате добавления
+    @objc dynamic var rating = 0.0
     
     //инициализатор
-    convenience init(name: String, location: String?, type: String?, imageDate: Data?) {
+    convenience init(name: String, location: String?, type: String?, imageDate: Data?, rating: Double) {
         self.init()
         self.name = name
         self.location = location
         self.type = type
         self.imageData = imageDate
+        self.rating = rating
     }
     
     /*  До использования Realm
