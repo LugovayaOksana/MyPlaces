@@ -14,6 +14,7 @@ class MapViewController: UIViewController {
     var place = Place()
     let annotationIdentifier = "annotationIdentifier"
     let locationManager = CLLocationManager()
+    let regionInMeters = 10_000.00
     
     @IBOutlet var mapView: MKMapView!
     
@@ -27,6 +28,15 @@ class MapViewController: UIViewController {
     @IBAction func closeVC() {
         dismiss(animated: true)
     }
+    
+    
+    @IBAction func centerViewInUserLocation() {
+        if let location = locationManager.location?.coordinate {
+            let region = MKCoordinateRegion(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+            mapView.setRegion(region, animated: true)
+        }
+    }
+    
     
     private func setupPlacemark() {
         guard let location = place.location else { return }
@@ -59,7 +69,12 @@ class MapViewController: UIViewController {
             setupLocationManager()
             checkLocationAuthorization()
         } else {
-            // show alert controller
+            // Let's postpone the controller call
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.showAlert(
+                    title: "Location Services are Disabled",
+                    message: "To enable it go: Settings -> Privacy -> Location Services and turn On")
+            }
         }
     }
     
@@ -74,7 +89,11 @@ class MapViewController: UIViewController {
             mapView.showsUserLocation = true
             break
         case .denied:
-            break
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.showAlert(
+                    title: "Location Services are Disabled",
+                    message: "To enable it go: Settings -> Privacy -> Location Services and turn On")
+            }
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
         case .restricted:
@@ -84,6 +103,14 @@ class MapViewController: UIViewController {
         @unknown default:
             print("New case is availab")
         }
+    }
+    
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        
+        alert.addAction(okAction)
+        present(alert, animated: true)
     }
 }
 
