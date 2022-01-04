@@ -17,6 +17,8 @@ class NewPlaceViewController: UITableViewController {
     
     @IBOutlet var placeName: UITextField!
     @IBOutlet var placeLocation: UITextField!
+    
+    
     @IBOutlet var placeType: UITextField!
     @IBOutlet var ratingControl: RatingControll!
     
@@ -53,7 +55,7 @@ class NewPlaceViewController: UITableViewController {
             actionSheet.addAction(photo)
             actionSheet.addAction(cancel)
             
-            // вызываем контроллер
+            // Сall the controller
             present(actionSheet, animated: true)
         } else {
             view.endEditing(true)
@@ -63,12 +65,13 @@ class NewPlaceViewController: UITableViewController {
     // MARK: Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier != "showMap" {
-            return
-        }
+        if segue.identifier != "showMap" { return }
         
         let mapVC = segue.destination as! MapViewController
-        mapVC.place = currentPlace
+        mapVC.place.name = placeName.text!
+        mapVC.place.location = placeLocation.text
+        mapVC.place.type = placeType.text
+        mapVC.place.imageData = placeImage.image?.pngData()
     }
     
     private func setupEditScreen(){
@@ -103,7 +106,7 @@ class NewPlaceViewController: UITableViewController {
 
 // MARK: - Text field delegate
 extension NewPlaceViewController: UITextFieldDelegate {
-    // Скрываем клавиатуру по нажатию на Done
+    // Hide the keyboard by pressing the button Done
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -118,13 +121,7 @@ extension NewPlaceViewController: UITextFieldDelegate {
     }
     
     func savePlace() {
-        var image: UIImage?
-        
-        if imageIsChanged {
-            image = placeImage.image
-        } else {
-            image = UIImage(named: "imagePlaceholder")
-        }
+        let image = imageIsChanged ? placeImage.image : UIImage(named: "imagePlaceholder")
         
         let imageData = image?.pngData()
         let newPlace = Place(name: placeName.text!,
