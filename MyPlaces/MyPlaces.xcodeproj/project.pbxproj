@@ -19,6 +19,7 @@
 		D7240DBF277DF171000B7E30 /* NewPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7240DBE277DF171000B7E30 /* NewPlaceViewController.swift */; };
 		D7240DC1278073B0000B7E30 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7240DC0278073B0000B7E30 /* StorageManager.swift */; };
 		D7240DEA27830BE4000B7E30 /* RatingControll.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7240DE927830BE4000B7E30 /* RatingControll.swift */; };
+		D79FD22D27857406007521B9 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79FD22C27857406007521B9 /* MapManager.swift */; };
 		D7C1373227835D28006CA79E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C1373127835D28006CA79E /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		D7240DBE277DF171000B7E30 /* NewPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaceViewController.swift; sourceTree = "<group>"; };
 		D7240DC0278073B0000B7E30 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		D7240DE927830BE4000B7E30 /* RatingControll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControll.swift; sourceTree = "<group>"; };
+		D79FD22C27857406007521B9 /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		D7C1373127835D28006CA79E /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		F6E1C82D8C39C335A7207956 /* Pods_MyPlaces.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyPlaces.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -92,21 +94,62 @@
 		D7240DA3277C67FB000B7E30 /* MyPlaces */ = {
 			isa = PBXGroup;
 			children = (
-				D7240DA4277C67FB000B7E30 /* AppDelegate.swift */,
+				D79FD22E278582AA007521B9 /* ViewControllers */,
+				D79FD230278582FF007521B9 /* Helpers */,
+				D79FD22F278582E6007521B9 /* Models */,
+				D79FD2312785833E007521B9 /* Support Files */,
+				D79FD23227858398007521B9 /* IBuilder */,
 				D7240DA6277C67FB000B7E30 /* SceneDelegate.swift */,
-				D7240DAA277C67FB000B7E30 /* Main.storyboard */,
-				D7240DAD277C67FD000B7E30 /* Assets.xcassets */,
-				D7240DAF277C67FD000B7E30 /* LaunchScreen.storyboard */,
-				D7240DB2277C67FD000B7E30 /* Info.plist */,
-				D7240DB8277C7186000B7E30 /* MainViewController.swift */,
-				D7240DBA277CE549000B7E30 /* CustomTableViewCell.swift */,
-				D7240DE927830BE4000B7E30 /* RatingControll.swift */,
-				D7240DBC277D9DBE000B7E30 /* Place.swift */,
-				D7240DBE277DF171000B7E30 /* NewPlaceViewController.swift */,
-				D7240DC0278073B0000B7E30 /* StorageManager.swift */,
-				D7C1373127835D28006CA79E /* MapViewController.swift */,
 			);
 			path = MyPlaces;
+			sourceTree = "<group>";
+		};
+		D79FD22E278582AA007521B9 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D7240DB8277C7186000B7E30 /* MainViewController.swift */,
+				D7C1373127835D28006CA79E /* MapViewController.swift */,
+				D7240DBE277DF171000B7E30 /* NewPlaceViewController.swift */,
+				D7240DBA277CE549000B7E30 /* CustomTableViewCell.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D79FD22F278582E6007521B9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D7240DBC277D9DBE000B7E30 /* Place.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D79FD230278582FF007521B9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D7240DC0278073B0000B7E30 /* StorageManager.swift */,
+				D79FD22C27857406007521B9 /* MapManager.swift */,
+				D7240DE927830BE4000B7E30 /* RatingControll.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D79FD2312785833E007521B9 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D7240DA4277C67FB000B7E30 /* AppDelegate.swift */,
+				D7240DAD277C67FD000B7E30 /* Assets.xcassets */,
+				D7240DB2277C67FD000B7E30 /* Info.plist */,
+			);
+			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		D79FD23227858398007521B9 /* IBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				D7240DAA277C67FB000B7E30 /* Main.storyboard */,
+				D7240DAF277C67FD000B7E30 /* LaunchScreen.storyboard */,
+			);
+			path = IBuilder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,6 +273,7 @@
 				D7240DA5277C67FB000B7E30 /* AppDelegate.swift in Sources */,
 				D7C1373227835D28006CA79E /* MapViewController.swift in Sources */,
 				D7240DC1278073B0000B7E30 /* StorageManager.swift in Sources */,
+				D79FD22D27857406007521B9 /* MapManager.swift in Sources */,
 				D7240DBB277CE54A000B7E30 /* CustomTableViewCell.swift in Sources */,
 				D7240DA7277C67FB000B7E30 /* SceneDelegate.swift in Sources */,
 				D7240DBD277D9DBE000B7E30 /* Place.swift in Sources */,
@@ -384,8 +428,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VQD3WHNZZ2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MyPlaces/Info.plist;
+				INFOPLIST_FILE = "MyPlaces/Support Files/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = MyPlaces;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs a camera";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "For directions to your favorite place, also get place address";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -416,8 +462,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VQD3WHNZZ2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MyPlaces/Info.plist;
+				INFOPLIST_FILE = "MyPlaces/Support Files/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = MyPlaces;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs a camera";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "For directions to your favorite place, also get place address";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
