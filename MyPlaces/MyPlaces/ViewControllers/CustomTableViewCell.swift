@@ -2,7 +2,7 @@
 //  CustomTableViewCell.swift
 //  MyPlaces
 //
-//  Created by Оксана on 29.12.2021.
+//  Created by Oksana on 29.12.2021.
 //
 
 import UIKit

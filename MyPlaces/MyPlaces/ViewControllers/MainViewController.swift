@@ -10,7 +10,6 @@ import RealmSwift
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-//    var places = Place.getPlaces()
     /*
     Results - это автообновляемый тип контейнера который возвращает запрашиваемые объекты.
     Результаты всегда отображают текущее состояние хранилища в текущем потоке.
